@@ -73,7 +73,10 @@ jobs:
           # submodules + LFS required so patch.sh --liquid-glass gets the real
           # Assets.car (Git LFS), not an un-pulled pointer that crashes the IPA.
           submodules: recursive
-          lfs: true
+          lfs: false
+
+      - name: Force LFS Skip Environment Flag
+        run: echo "GIT_LFS_SKIP_SMUDGE=1" >> $GITHUB_ENV
 
       - name: Validate inputs
         run: |
